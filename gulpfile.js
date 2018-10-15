@@ -15,6 +15,7 @@ const path = require('path');
 const rootPath = path.resolve(__dirname);
 const notesRoot = path.join(rootPath, "/src/html/notes");
 
+const prettyDateFormat = "D MMM YYYY";
 const posts = fs.readdirSync(notesRoot).map(fileName => {
     const postPath = path.join(notesRoot, fileName);
     const postContent = fs.readFileSync(postPath, { encoding: "utf8" });
@@ -23,10 +24,10 @@ const posts = fs.readdirSync(notesRoot).map(fileName => {
 
     return {
         title: metaData.attributes.title,
-        date: date.format("D MMMM YYYY"),
+        date: date.format(prettyDateFormat),
         slug: fileName.split(".")[0]
     }
-});
+}).sort((a, b) => moment(b.date, prettyDateFormat).diff(moment(a.date, prettyDateFormat)));
 
 const onError = function(err) { 
     gutil.log(gutil.colors.red('[Error]'), err.toString());
