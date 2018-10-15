@@ -1,12 +1,11 @@
 ---
-title: Dev notes!
-date: 15-10-18
+title: Notes
 description: Some notes from development
 ---
 
-<h3>Posts:</h3>
 <% posts.forEach(function(post) { %>
     <div>
-        <span class="text-muted"><%= post.date %></span> <a href="/notes/<%= post.slug %>"><%= post.title %></a>
+        <span class="text-muted"><%= post.date %></span>
+        <a href="/notes/<%= post.slug %>"><%= post.title %></a>
     </div>
 <% }); %>
