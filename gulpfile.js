@@ -10,24 +10,26 @@ const frontMatter = require('gulp-front-matter');
 const fs = require('fs');
 const fm = require('front-matter');
 const moment = require('moment');
-
 const path = require('path');
-const rootPath = path.resolve(__dirname);
-const notesRoot = path.join(rootPath, "/src/html/notes");
 
+const notesRoot = "src/html/notes";
 const prettyDateFormat = "D MMM YYYY";
-const posts = fs.readdirSync(notesRoot).map(fileName => {
-    const postPath = path.join(notesRoot, fileName);
-    const postContent = fs.readFileSync(postPath, { encoding: "utf8" });
-    const metaData = fm(postContent);
-    const date = moment(metaData.attributes.date, "DD-MM-YY");
 
-    return {
-        title: metaData.attributes.title,
-        date: date.format(prettyDateFormat),
-        slug: fileName.split(".")[0]
-    }
-}).sort((a, b) => moment(b.date, prettyDateFormat).diff(moment(a.date, prettyDateFormat)));
+const posts = fs.readdirSync(notesRoot)
+    .map(fileName => {
+        const postPath = path.join(notesRoot, fileName);
+        const postContent = fs.readFileSync(postPath, { encoding: "utf8" });
+        const metaData = fm(postContent);
+        const date = moment(metaData.attributes.date, "DD-MM-YY");
+
+        return {
+            title: metaData.attributes.title,
+            date: date.format(prettyDateFormat),
+            slug: fileName.split(".")[0]
+        }
+    }).sort((a, b) => 
+        moment(b.date, prettyDateFormat)
+        .diff(moment(a.date, prettyDateFormat)));
 
 const onError = function(err) { 
     gutil.log(gutil.colors.red('[Error]'), err.toString());
