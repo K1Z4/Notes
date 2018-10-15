@@ -1,0 +1,19 @@
+---
+title: Simple Gulp blog
+date: 15-10-18
+description: A simpler way to build a static blog
+---
+
+<p>Looking at the tech available when building this blog I looked at a quite a few static site building packages. There seemed to be a minefield of trendy JS libraries claiming to be the ultimate solution for static site generation.</p>
+
+<p>Yet I was turned off by all the command line interfaces and the lack of knowledge of whats happening under the hood. It felt like a needless learning curve for a bunch of tech I already know. </p>
+
+<p>Instead of using any of them I went with a custom solution built on top of Gulp. All I wanted was a listing of my blog posts and some simple templating.</p>
+
+<p>To do so I use a few packages to parse the front matter and inject it into my pages using EJS. </p>
+
+<p>All I do to publish a new blog post is create the file and push the commit. In the end I have a timeless build system which integrates perfectly with Netlify for free hosting.</p>
+
+<p><a href="https://github.com/K1Z4/Notes/blob/master/gulpfile.js">Check out my gulp file</a> 
+
+<p>You can find the <a href="https://github.com/K1Z4/Notes">full source</a> of this blog on GitHub.</p>
