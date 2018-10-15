@@ -1,0 +1,10 @@
+h1 {
+    font-family: 'Nexa Bold', 'Helvetica Neue', 'Arial', sans-serif;
+    letter-spacing: -0.005rem;
+    text-transform: uppercase;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    font-weight: bold;
+    font-size: 35px;
+}
