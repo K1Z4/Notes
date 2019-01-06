@@ -8,3 +8,8 @@ h1 {
     font-weight: bold;
     font-size: 35px;
 }
+
+pre, .pre {
+    background-color: #f3f3f3;
+    padding: 8px 10px;
+}

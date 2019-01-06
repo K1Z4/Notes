@@ -1,0 +1,23 @@
+---
+title: Go http tunnel and Nginx
+date: 06-01-19
+description: Getting Go http tunnel working with Nginx
+---
+
+<p>If you're trying to get <a href="https://github.com/mmatczuk/go-http-tunnel" target="blank">go-http-tunnel</a> to work with Nginx you may encounter an issue where you get a <span class="pre">client not subscribed</span> error.</p>
+<p>If you request the webpage on your server without proxying it through Nginx you may get the expected response but not after it goes through Nginx. You can check by doing a quick <span class="pre">wget localhost:8080</span> on your server using the port that go-http-tunnel is serving from.</p>
+<h3>Solution</h3>
+<p>Add the following line to your Nginx config location block:</p>
+
+<pre>
+    proxy_set_header Host $host;
+</pre>
+
+<p>Here is an example of my full location block:</p>
+
+<pre>
+    location / {
+        proxy_pass http://localhost:8088;
+        proxy_set_header Host $host;
+    }
+</pre>
