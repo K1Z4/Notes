@@ -1,0 +1,16 @@
+---
+title: "The type or namespace could not be found" aka corrupt nuget packages
+date: 17-01-19
+description: "The type or namespace could not be found" aka corrupt nuget packages
+---
+<p><span class="pre">The type or namespace could not be found</span> error when you have changed litterally nothing</p>
+<p>Normally a sign of a corrupt package, sometimes if you look under dependencies -> nuget -> {project name} you will see the project installed by there will not be a dll at the bottom of the folder.</p>
+<h2>Fix</h2>
+<ol>
+    <li>Remove the package under dependencies -> nuget -> {project name}</li>
+    <li>Remove it's folder from %UserProfile%\.nuget\packages</li>
+    <li>Install the package again</li>
+    <li>Build</li>
+</ol>
+
+<p>Could also try clear nuget packages via <span class="pre">Tools -> NuGet Package Manager -> Package Manager Settings -> Clear All Nuget Cache(s)</span> but this didn't seem to work for me.</p>
