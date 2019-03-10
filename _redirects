@@ -1,0 +1,5 @@
+# Redirect domain aliases to primary domain
+https://notes.vsi.li/* https://notes.kiza.dev/:splat 301!
+
+# Optional: Redirect default Netlify subdomain to primary domain
+https://upbeat-torvalds-03f76c.netlify.com/* https://notes.kiza.dev/:splat 301!
